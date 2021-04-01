@@ -31,6 +31,7 @@ export default {
   opacity: 0.8
   border: none
   outline: none
+  margin: 10px
   &:hover
     opacity: 1
 

@@ -1,6 +1,7 @@
 <template>
-  <input v-model="text" v-on:input="$emit('change-in-input', text)" >
-  <p>{{text}}</p>
+  <div>
+    <input v-model="text" v-on:input="$emit('change-in-input', text)" >
+  </div>
 </template>
 
 <script>
@@ -14,6 +15,8 @@ export default {
 }
 </script>
 
-<style lang="sass" scoped>
-
+<style scoped>
+input {
+  margin: 10px;
+}
 </style>
