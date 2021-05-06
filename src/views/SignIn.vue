@@ -1,10 +1,8 @@
 <template>
   <div>
-    <h1>Sign Up</h1>
+    <h1>Login</h1>
     <CustomInput :label="'Email'" v-on:change-in-input="getEmail"/>
     <CustomInput :label="'Password'" v-on:change-in-input="getPassword"/>
-    <CustomInput :label="'First Name'" v-on:change-in-input="getName"/>
-    <CustomInput :label="'Last Name'" v-on:change-in-input="getLastName"/>
     <button class="my-button" @click="submit">Submit</button>
   </div>
 </template>
@@ -25,16 +23,16 @@ export default {
       dataForSubmit: {
         email: '',
         password: '',
-        fname: '',
-        lname: '',
-        active: true,
       }
     }
   },
   methods: {
     async submit () {
-      await apiService.post('/users', this.dataForSubmit)
-        .then(() => {
+      await apiService.post('/users/sign-in', this.dataForSubmit)
+        .then((res) => {
+          const token = res.data.tokens.accessToken;
+          console.log(token)
+          window.localStorage.setItem('token', token);
           this.$router.push('users');
         })
         .catch((err) => {
@@ -55,12 +53,6 @@ export default {
     getPassword(data) {
       this.dataForSubmit.password = data
     },
-    getName(data) {
-      this.dataForSubmit.fname = data
-    },
-    getLastName(data) {
-      this.dataForSubmit.lname = data
-    }
   }
 }
 </script>

@@ -1,7 +1,5 @@
 <template>
   <div class="header">
-    <p>{{retriveText}}</p>
-    <p>{{text}}</p>
   </div>
 </template>
 
